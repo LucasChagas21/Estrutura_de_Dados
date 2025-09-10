@@ -2,20 +2,20 @@ public class PilhaDeChars {
     private static final int MAX = 100;
     private char[] pilha;
     private int topo;
-    // Construtor: cria a pilha vazia
+    
     public PilhaDeChars() {
         pilha = new char[MAX];
         topo = -1;
     }
-    // Verifica se a pilha está vazia
+
     public boolean pilhaVazia() {
         return topo == -1;
     }
-    // Verifica se a pilha está cheia
+    
     public boolean pilhaCheia() {
         return topo == MAX - 1;
     }
-    // Empilha um caractere. Retorna true se sucesso, false se cheia
+    
     public boolean empilha(char c) {
         if (pilhaCheia()) {
             return false;
@@ -23,14 +23,14 @@ public class PilhaDeChars {
         pilha[++topo] = c;
         return true;
     }
-    // Desempilha um caractere. Retorna o caractere ou lança exceção se vazia
+    
     public char desempilha() throws Exception {
         if (pilhaVazia()) {
             throw new Exception("Pilha vazia");
         }
         return pilha[topo--];
     }
-    // Método para testar a pilha
+    
     public static void main(String[] args) {
         PilhaDeChars pilha = new PilhaDeChars();
         if (pilha.empilha('A')) {
@@ -50,3 +50,4 @@ public class PilhaDeChars {
         }
     }
 }
+
