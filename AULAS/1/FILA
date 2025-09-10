@@ -1,0 +1,64 @@
+public class FilaDeInts {
+    private static final int MAX = 100; // tamanho máximo da fila
+    private int[] fila;
+    private int inicio; // índice do início da fila
+    private int fim;    // índice do fim da fila
+    private int tamanho; // quantidade de elementos na fila
+    // Construtor: cria fila vazia
+    public FilaDeInts() {
+        fila = new int[MAX];
+        inicio = 0;
+        fim = -1;
+        tamanho = 0;
+    }
+    // Verifica se a fila está vazia
+    public boolean filaVazia() {
+        return tamanho == 0;
+    }
+    // Verifica se a fila está cheia
+    public boolean filaCheia() {
+        return tamanho == MAX;
+    }
+    // Coloca um elemento na fila. Retorna true se sucesso, false se cheia
+    public boolean colocaNaFila(int valor) {
+        if (filaCheia()) {
+            return false;
+        }
+        fim = (fim + 1) % MAX;
+        fila[fim] = valor;
+        tamanho++;
+        return true;
+    }
+    // Retira um elemento da fila. Retorna o elemento ou lança exceção se vazia
+    public int tiraDaFila() throws Exception {
+        if (filaVazia()) {
+            throw new Exception("Fila vazia");
+        }
+        int valor = fila[inicio];
+        inicio = (inicio + 1) % MAX;
+        tamanho--;
+        return valor;
+    }
+    // Método para testar a fila
+    public static void main(String[] args) {
+        FilaDeInts fila = new FilaDeInts();
+        if (fila.colocaNaFila(10)) {
+            System.out.println("Colocou 10 na fila");
+        }
+        if (fila.colocaNaFila(20)) {
+            System.out.println("Colocou 20 na fila");
+        }
+        if (fila.colocaNaFila(30)) {
+            System.out.println("Colocou 30 na fila");
+        }
+        System.out.println("Retirando elementos da fila:");
+        while (!fila.filaVazia()) {
+            try {
+                int valor = fila.tiraDaFila();
+                System.out.println("Retirou " + valor);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
