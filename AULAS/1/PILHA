@@ -7,15 +7,12 @@ public class PilhaDeChars {
         pilha = new char[MAX];
         topo = -1;
     }
-
     public boolean pilhaVazia() {
         return topo == -1;
     }
-    
     public boolean pilhaCheia() {
         return topo == MAX - 1;
     }
-    
     public boolean empilha(char c) {
         if (pilhaCheia()) {
             return false;
@@ -23,14 +20,12 @@ public class PilhaDeChars {
         pilha[++topo] = c;
         return true;
     }
-    
     public char desempilha() throws Exception {
         if (pilhaVazia()) {
             throw new Exception("Pilha vazia");
         }
         return pilha[topo--];
     }
-    
     public static void main(String[] args) {
         PilhaDeChars pilha = new PilhaDeChars();
         if (pilha.empilha('A')) {
@@ -50,4 +45,5 @@ public class PilhaDeChars {
         }
     }
 }
+
 
